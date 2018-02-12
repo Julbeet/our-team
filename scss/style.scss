@@ -1,0 +1,271 @@
+
+@import '_normalize';
+@import '_mixins';
+@import '_vars';
+
+body {
+	height: 100%;
+	font: $text-font;
+	color: $text-color;
+}
+
+.section {
+	padding: 100px 0;
+	width: 1140px;
+	margin: 0 auto;
+
+	&__heading {
+		text-align: center;
+		text-transform: uppercase;
+		position: relative;
+		padding-bottom: 40px;
+		&::before,
+		&::after {
+			content: "";
+			position: absolute;
+			bottom: 0;
+			left: 50%;
+			transform: translate(-50%, 0);
+		}
+		&::before {
+			width: 450px;
+			@include b-b();
+		}
+		&::after {
+			content: "";
+			display: inline-block;
+			width: 30px;
+			height: 30px;
+			background-color: #fff;
+			@include background-image('../img/flower.jpg');
+			-webkit-transform: translate(-50%, 50%);
+			-moz-transform: translate(-50%, 50%);
+			-ms-transform: translate(-50%, 50%);
+			-o-transform: translate(-50%, 50%);
+			transform: translate(-50%, 50%);
+			
+		
+		}
+	}
+
+	&__subtitle{
+		font: $text-font;
+		color: $secondary-color;
+		font-size: 18px
+}
+
+	&__title {
+		color: $primary-color;
+		font: $heading-font;
+		font-size: 60px;
+		line-height: 1.1;
+		margin: 0;
+	}
+}
+
+
+.slider {
+		
+		position: relative;
+		margin: 50px 0;
+		padding-bottom: 50px;
+	
+	&__wrap{
+			}
+	&__slide {
+		height: 560px;
+	}
+	&__arrow {
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		display: inline-block;
+		width: 70px;
+		@include background-image('../img/left.png');
+		opacity: 0.4;
+		transition: opacity 0.25s ease-in;
+		&--prev {
+			left: 0;
+			
+		}
+		&--next{
+			right: 0;
+			transform: rotate(180deg);
+		}
+		&:active,
+		&:hover,
+		&:focus {
+			opacity: 1;
+		}
+		
+	}
+	&__dots {
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		margin: 0;
+		padding: 0;
+		text-align: center;
+		
+	}
+	&__dot {
+		display: inline-block;
+		a{
+			display: inline-block;
+			width: 12px;
+			height: 12px;
+			@include border(#fff, $border-width, solid);
+			background: $primary-color;
+			border-radius: 50%;
+			transition: all 0.4s ease-in;
+			&:hover,
+			&:active,
+			&:focus {
+				border-color: $primary-color;
+				background: #fff;
+			}
+		}
+		&.active {
+			a{
+				border-color: $primary-color;
+				background: #fff;
+			}
+			
+		}
+	}
+}
+
+.profile {
+	display: flex;
+	&__left,
+	&__right {
+		width: 50%;
+		height: 100%;
+		padding: 80px;
+		box-sizing: border-box;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+	}
+	&__left {
+		@include b-r();
+
+	}
+	&__right {
+		text-align: center;
+		
+	}
+	&__img-wrap {
+		@include b();
+		padding: 20px;
+		position: relative;
+		box-sizing: border-box;
+		font-size: 0;
+		&::before,
+		&::after {
+			content: "";
+			background: #fff;
+			display: inline-block;
+			width: 102%;
+			height: 50%;
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			transform: translate(-50%, -50%);
+			z-index: 0;
+		}
+		&::after {
+			width: 50%;
+			height: 102%;
+		}
+	
+	}
+
+	&__img {
+		@include b();
+		width: 100%;
+		position: relative;
+		z-index: 1;
+	}
+
+	&__title {
+		font: $heading-font;
+		color:$heading-color;
+		position: relative;
+		padding-bottom: 35px;
+		&::after {
+			content: "";
+			display: inline-block;
+			width: 110px;
+			position: absolute;
+			bottom: 0;
+			left: 50%;
+			transform: translate(-50%, 0);
+			@include b-b();
+		}
+	}
+
+	
+	&__subtitle {
+		font: $text-font;
+		font-size: 24px;
+		color: $heading-color;
+		padding: 25px 0;
+	}
+	&__text {
+		padding: 30px 0 50px; 
+		position: relative;
+		&::after {
+			content: "";
+			width: 50px;
+			height: 4px;
+			display: block;
+			position: absolute;
+			bottom: 25px;
+			left: 50%;
+		    right: 50%;
+		    transform: translate(-50%, -50%);
+			background-image: linear-gradient(to right,
+                                                 #fc0 20%,
+                                                 #fff 20%, #fff 30%,
+                                                 #fc0 30%, #fc0 70%, 
+                                                 #fff 70%, #fff 80%, 
+                                                 #fc0 80%);
+		}
+	}
+	&__link {
+		text-transform: uppercase;
+		text-decoration: none;
+		color: $button-color;
+		font: $button-font;
+		@include b();
+		display: inline-block;
+		padding: 5px 20px;
+		transition: all 0.25s ease-in;
+
+		&:hover,
+		&:active,
+		&:focus {
+			background: $primary-color;
+		}
+	}
+
+}
+
+.socials {
+	padding: 0;
+	margin: 0;
+	&__item {
+		display: inline-block;
+	}
+	&__link img{
+		opacity: 0.5;
+		@include transition();
+	}
+	&__link:hover img{
+		opacity: 1;
+		}
+}
+
